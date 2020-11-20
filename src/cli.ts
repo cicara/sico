@@ -6,6 +6,7 @@ const program = new Command();
 program.storeOptionsAsProperties(false);
 
 program.name('sico')
+program.version(require('../package.json').version);
 program.arguments('<pattern>');
 program.option(`-w --write`, 'overwrite origin files', false);
 program.option(`-p --pretty`, 'pretty output', false);
