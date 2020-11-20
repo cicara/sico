@@ -1,6 +1,6 @@
 {
   "name": "@cicara/sico",
-  "version": "0.0.0-1",
+  "version": "0.0.1-0",
   "description": "optimize svg file for svg icons",
   "main": "dist/lib.js",
   "bin": {
