@@ -6,6 +6,13 @@ import pretty from 'pretty';
 import commondir from 'commondir';
 import * as svgson from 'svgson';
 
+interface Options {
+  write?: boolean;
+  pretty: boolean;
+  output?: string;
+  convertPathData: boolean;
+}
+
 function runPattern(pattern: string) {
   return new Promise<Array<string>>((resolve, reject) => {
     glob(pattern, (err, matchs) => {
@@ -49,11 +56,11 @@ function removeEmptyDefs(node: svgson.INode) {
   return node;
 }
 
-export async function transform(pattern: string, options: { write?: boolean, pretty?: boolean, output?: string }) {
+export async function transform(pattern: string, options: Options) {
   const svgo = new Svgo({
     plugins: [
       { removeViewBox: false },
-      { removeDoctype: false },
+      { convertPathData: options.convertPathData },
       { removeUselessDefs: true },
       { removeStyleElement: true },
       { removeScriptElement: true },
