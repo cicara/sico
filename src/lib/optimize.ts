@@ -10,6 +10,7 @@ interface Options {
   write?: boolean;
   pretty: boolean;
   output?: string;
+  setSize1em: boolean;
   currentColor: boolean;
   convertPathData: boolean;
 }
@@ -98,8 +99,10 @@ export async function transform(pattern: string, options: Options) {
       }
       svgNode = removeEmptyDefs(svgNode)!;
       // step 3
-      svgNode.attributes.width = '1em';
-      svgNode.attributes.height = '1em';
+      if(options.setSize1em) {
+        svgNode.attributes.width = '1em';
+        svgNode.attributes.height = '1em';
+      }
 
       return {
         svg: svgson.stringify(svgNode),
