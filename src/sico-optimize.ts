@@ -8,7 +8,8 @@ program.storeOptionsAsProperties(false);
 program.arguments('<pattern>');
 program.option(`-w --write`, 'overwrite origin files', false);
 program.option(`-p --pretty`, 'pretty output', false);
-program.option(`--convert-path-data`, 'convert Path data to relative or absolute (whichever is shorter), convert one segment to another, trim useless delimiters, smart rounding, and much more', true);
+program.option(`--current-color`, 'transform color to currentColor', false);
+program.option(`--convert-path-data`, 'convert Path data to relative or absolute (whichever is shorter), convert one segment to another, trim useless delimiters, smart rounding, and much more', false);
 program.option(`-o --output <destination>`, 'output path for new files (can not coexist with write)');
 program.action(async (pattern) => {
   const options = program.opts();

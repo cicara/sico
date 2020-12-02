@@ -10,6 +10,7 @@ interface Options {
   write?: boolean;
   pretty: boolean;
   output?: string;
+  currentColor: boolean;
   convertPathData: boolean;
 }
 
@@ -92,7 +93,9 @@ export async function transform(pattern: string, options: Options) {
       const optimizedSvg = await svgo.optimize(svg);
       // step 2
       let svgNode = await svgson.parse(optimizedSvg.data);
-      svgNode = setCurrentColor(svgNode);
+      if(options.currentColor) {
+        svgNode = setCurrentColor(svgNode);
+      }
       svgNode = removeEmptyDefs(svgNode)!;
       // step 3
       svgNode.attributes.width = '1em';
