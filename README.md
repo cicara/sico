@@ -6,7 +6,7 @@ Svg Icon Optimize
 
 ### Usage
 ```shell
-npm install -g sico
+npm install -g @cicara/sico
 ```
 
 ### Options
